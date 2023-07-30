@@ -1,0 +1,93 @@
+{
+  "name": "ws-adapter",
+  "version": "1.0.0",
+  "description": "Simple adapter for HTTP <=> Websocket.",
+  "private": false,
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"blue.bold,green.bold\" \"npm run watch-ts\" \"npm run nodemon\"",
+    "p:dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"blue.bold,green.bold\" \"pnpm run watch-ts\" \"pnpm run nodemon\"",
+    "build": "tsc && npm run lint",
+    "start": "node dist | bunyan",
+    "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
+    "lint-fix": "npm run lint-fix:eslint && npm run lint-fix:prettier",
+    "lint-fix:eslint": "eslint --fix .",
+    "lint-fix:prettier": "prettier --write .",
+    "watch-ts": "tsc -w",
+    "nodemon": "nodemon --delay 1500ms -e js --watch dist dist | bunyan",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "compression": "^1.7.4",
+    "connect-rid": "^0.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "lodash": "^4.17.21",
+    "qs": "^6.11.2",
+    "rc": "^1.2.8",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/bunyan": "^1.8.8",
+    "@types/compression": "^1.7.2",
+    "@types/cron": "^2.0.1",
+    "@types/express": "^4.17.17",
+    "@types/lodash": "^4.14.196",
+    "@types/node": "^20.4.5",
+    "@types/rc": "^1.2.1",
+    "@types/ws": "^8.5.5",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "concurrently": "^8.2.0",
+    "cpx": "^1.5.0",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-jsdoc": "^46.4.5",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
+  },
+  "keywords": [
+    "adapter",
+    "express",
+    "http",
+    "websocket"
+  ],
+  "author": {
+    "name": "Gradiyanto Putera Husein",
+    "email": "gradiph@gmail.com",
+    "url": "https://github.com/gradiph"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/gradiph/ws-adapter#readme",
+  "repository": {
+    "type": "git",
+    "url": "github:gradiph/ws-adapter"
+  },
+  "bugs": {
+    "url": "https://github.com/gradiph/ws-adapter/issues",
+    "email": "gradiph@gmail.com"
+  },
+  "funding": [
+    {
+      "type": "individual",
+      "url": "https://bmc.link/gradiph"
+    },
+    {
+      "type": "patreon",
+      "url": "https://patreon.com/GradiyantoPuteraHusein"
+    },
+    {
+      "type": "individual",
+      "url": "https://saweria.co/gradiph"
+    }
+  ],
+  "files": [
+    "src/**/*"
+  ]
+}
