@@ -7,8 +7,7 @@
   "scripts": {
     "test": "npm run lint",
     "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"blue.bold,green.bold\" \"npm run watch-ts\" \"npm run nodemon\"",
-    "p:dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"blue.bold,green.bold\" \"pnpm run watch-ts\" \"pnpm run nodemon\"",
-    "build": "tsc && npm run lint",
+    "build": "npm run build-time && tsc && npm run lint",
     "start": "node dist | bunyan",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
     "lint-fix": "npm run lint-fix:eslint && npm run lint-fix:prettier",
@@ -16,6 +15,7 @@
     "lint-fix:prettier": "prettier --write .",
     "watch-ts": "tsc -w",
     "nodemon": "nodemon --delay 1500ms -e js --watch dist dist | bunyan",
+    "build-time": "node ./bin/build-time.mjs",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -23,8 +23,11 @@
     "compression": "^1.7.4",
     "connect-rid": "^0.0.1",
     "cors": "^2.8.5",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "fs": "0.0.1-security",
     "lodash": "^4.17.21",
+    "path": "^0.12.7",
     "qs": "^6.11.2",
     "rc": "^1.2.8",
     "ws": "^8.13.0"
@@ -33,6 +36,7 @@
     "@types/bunyan": "^1.8.8",
     "@types/compression": "^1.7.2",
     "@types/cron": "^2.0.1",
+    "@types/ejs": "^3.1.2",
     "@types/express": "^4.17.17",
     "@types/lodash": "^4.14.196",
     "@types/node": "^20.4.5",

@@ -1,27 +1,18 @@
 import express from 'express';
-import config from './config';
+import { buildTime } from './build';
 import logger from './logger';
-import middlewares from './middlewares';
-import websockets from './websockets';
+import setMiddlewares from './middlewares';
+import startServer from './server';
+import setWebsockets from './websockets';
 
 const app = express();
-const { APP_PORT } = config;
-
-middlewares(app);
-
+setMiddlewares(app);
 app.get('/', (_, res) => {
-  res.send('API version 31/07/2023.');
+  res.send(`API Version: ${process.env.npm_package_version} <br />
+  Build time: ${buildTime}`);
 });
-
-const server = app.listen(APP_PORT, () => {
-  const message = `Server running at http://localhost:${APP_PORT}\n\n`;
-  logger.trace(message);
-  if (process.send) {
-    process.send(message);
-  }
-});
-
-websockets(server);
+const server = startServer(app);
+setWebsockets(server);
 
 process.on('message', (message: NodeJS.MessageListener) => {
   logger.info('process.on("message")', [message]);
