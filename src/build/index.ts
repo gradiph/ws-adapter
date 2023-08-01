@@ -1,3 +1,1 @@
-import buildTimeString from './build-time';
-
-export const buildTime = buildTimeString;
+export { default as buildTime } from './build-time';

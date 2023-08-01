@@ -1,21 +1,10 @@
-import { LogLevel } from 'bunyan';
 import rc from 'rc';
+import { Config } from '../@types';
 
-/**
- * Configuration data structure
- * @exports
- * @interface Config
- */
-export interface Config {
-  APP_NAME: string;
-  APP_PORT: number;
-  CORS_ALLOWED_URLS: string[];
-  LOG_LEVEL: LogLevel;
-}
-
-export const configDefault: Config = {
+const configDefault: Config = {
   APP_NAME: 'ws-adapter',
   APP_PORT: 5001,
+  CLIENTS: [],
   CORS_ALLOWED_URLS: ['*'],
   LOG_LEVEL: 'trace'
 };
