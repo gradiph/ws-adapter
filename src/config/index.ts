@@ -1,5 +1,5 @@
 import rc from 'rc';
-import { Config } from '../@types';
+import { Config } from '../@types/config.d';
 
 const APP_NAME = process.env.APP_NAME || 'ws-adapter';
 

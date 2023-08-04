@@ -1,5 +1,5 @@
 import { LogLevel } from 'bunyan';
-import { Client } from './client';
+import { Client } from './client.d';
 
 /**
  * Configuration data structure

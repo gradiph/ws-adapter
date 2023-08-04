@@ -52,6 +52,9 @@ devDependencies:
   '@types/express':
     specifier: ^4.17.17
     version: 4.17.17
+  '@types/json-stringify-safe':
+    specifier: ^5.0.0
+    version: 5.0.0
   '@types/lodash':
     specifier: ^4.14.196
     version: 4.14.196
@@ -97,6 +100,9 @@ devDependencies:
   husky:
     specifier: ^8.0.0
     version: 8.0.0
+  json-stringify-safe:
+    specifier: ^5.0.1
+    version: 5.0.1
   nodemon:
     specifier: ^3.0.1
     version: 3.0.1
@@ -275,6 +281,10 @@ packages:
 
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
+    dev: true
+
+  /@types/json-stringify-safe@5.0.0:
+    resolution: {integrity: sha512-UUA1sH0RSRROdInuDOA1yoRzbi5xVFD1RHCoOvNRPTNwR8zBkJ/84PZ6NhKVDtKp0FTeIccJCdQz1X2aJPr4uw==}
     dev: true
 
   /@types/json5@0.0.29:
@@ -2522,6 +2532,10 @@ packages:
 
   /json-stable-stringify-without-jsonify@1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
+    dev: true
+
+  /json-stringify-safe@5.0.1:
+    resolution: {integrity: sha512-ZClg6AaYvamvYEE82d3Iyd3vSSIjQ+odgjaTzRuO3s7toCdFKczob2i0zCh7JE8kWn17yvAWhUVxvqGwUalsRA==}
     dev: true
 
   /json5@1.0.2:
