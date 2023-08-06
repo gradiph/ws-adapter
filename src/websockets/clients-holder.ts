@@ -1,4 +1,4 @@
-import { find, map, reject } from 'lodash';
+import { find, map, reduce, reject } from 'lodash';
 import WebSocket from 'ws';
 import { AdapterClient, IClientsHolder } from '../@types/websocket.d';
 
@@ -37,6 +37,17 @@ export class ClientsHolder implements IClientsHolder {
 
   get({ clientId }: { clientId: string }): WebSocket.WebSocket[] {
     return (find(this.clients, { clientId }) as AdapterClient)?.sockets || [];
+  }
+
+  all(): string[] {
+    return reduce(
+      this.clients,
+      (result, client) => {
+        result.push(client.clientId);
+        return result;
+      },
+      []
+    );
   }
 }
 

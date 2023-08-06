@@ -6,14 +6,14 @@ import { clientsHolder } from './clients-holder';
 import sendMessage from './send-message';
 
 export default ({
-  senderClientId,
+  senderClient,
   receiverClientIds,
   message
 }: BroadcastRequest): number => {
   logger.info(
-    `Broadcasting message from clientId ${senderClientId} to clientIds ${stringify(
-      receiverClientIds
-    )} : ${message}`
+    `Broadcasting message from clientId ${
+      senderClient.clientId
+    } to clientIds ${stringify(receiverClientIds)} : ${message}`
   );
   let successCount = 0;
   forEach(receiverClientIds, (clientId) => {

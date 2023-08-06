@@ -1,4 +1,5 @@
 import WebSocket from 'ws';
+import { Client } from './client.d';
 
 export interface AdapterClient {
   clientId: string;
@@ -9,10 +10,11 @@ export interface IClientsHolder {
   add({ clientId, ws }: { clientId: string; ws: WebSocket.WebSocket }): void;
   remove({ ws }: { ws: WebSocket.WebSocket }): void;
   get({ clientId }: { clientId: string }): WebSocket.WebSocket[];
+  all(): string[];
 }
 
 export interface BroadcastRequest {
-  senderClientId: string;
+  senderClient: Client;
   receiverClientIds: string[];
   message: string;
 }

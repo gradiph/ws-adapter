@@ -1,1 +1,2 @@
-export { default as authenticate } from './authenticate';
+export { default as authenticateHttp } from './authenticate-http';
+export { default as authenticateWs } from './authenticate-ws';

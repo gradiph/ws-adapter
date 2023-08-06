@@ -1,7 +1,7 @@
 import { IncomingMessage } from 'http';
 import internal from 'stream';
 import WebSocket from 'ws';
-import { authenticate } from '../auth';
+import { authenticateWs } from '../auth';
 import logger from '../logger';
 
 export default (
@@ -10,11 +10,7 @@ export default (
   socket: internal.Duplex,
   head: Buffer
 ) => {
-  socket.on('error', (err) => {
-    logger.error('socket error', socket, err);
-  });
-
-  authenticate(req, ({ err, client }) => {
+  authenticateWs(req, ({ err, client }) => {
     if (err) {
       const message = err.message;
       logger.debug(
@@ -24,10 +20,6 @@ export default (
       socket.destroy();
       return;
     }
-
-    socket.removeListener('error', (err) => {
-      logger.error('socket error', socket, err);
-    });
 
     wss.handleUpgrade(req, socket, head, function done(ws) {
       wss.emit('connection', ws, req, client);

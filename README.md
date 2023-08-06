@@ -18,7 +18,7 @@ $ pnpm run start
 
 ## Configuration
 
-Configure the service with ```.${APP_NAME}rc``` file (_default:_ ```.ws-adapterrc```). See ```src/@types/config.ts``` to see all available configurations.
+Configure the service with `.${APP_NAME}rc` file (_default:_ `.ws-adapterrc`). See `src/@types/config.ts` to see all available configurations.
 
 ```javascript
 {
