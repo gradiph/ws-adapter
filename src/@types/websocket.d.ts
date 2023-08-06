@@ -10,3 +10,9 @@ export interface IClientsHolder {
   remove({ ws }: { ws: WebSocket.WebSocket }): void;
   get({ clientId }: { clientId: string }): WebSocket.WebSocket[];
 }
+
+export interface BroadcastRequest {
+  senderClientId: string;
+  receiverClientIds: string[];
+  message: string;
+}

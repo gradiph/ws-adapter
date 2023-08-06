@@ -1,8 +1,8 @@
 import { Express } from 'express';
+import registerApiInformation from './api-information';
+import registerBroadcast from './broadcast';
 
 export default (app: Express) => {
-  app.get('/', (_, res) => {
-    res.send(`API Version: ${process.env.npm_package_version} <br />
-    Build time: ${process.env.BUILD_TIME || new Date()}`);
-  });
+  registerApiInformation(app);
+  registerBroadcast(app);
 };

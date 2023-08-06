@@ -4,7 +4,7 @@ import { assign } from 'lodash';
 import WebSocket from 'ws';
 import { Client } from '../@types/client.d';
 import logger from '../logger';
-import { clientsHolder } from './clients-holder';
+import sendMessage from './send-message';
 
 export default async ({
   ws,
@@ -19,18 +19,16 @@ export default async ({
     data: message
   });
   logger.info(
-    `Forwarding message from [${client.clientId}] to ${config.url}: ${message}`
+    `Forwarding request from [${client.clientId}] to ${config.url}: ${message}`
   );
   logger.debug(`Sending axios request with config : `, config);
   const response = await axios(config);
-  if (ws.readyState === WebSocket.OPEN) {
-    logger.info(
-      `Forwarding response from ${config.url} to [${
-        client.clientId
-      }]: ${stringify(response.data)}`
-    );
-    ws.send(stringify(response.data));
-  } else {
-    clientsHolder.remove({ ws });
-  }
+  const respMesage = stringify(response.data);
+  logger.info(
+    `Forwarding response from ${config.url} to [${client.clientId}]: ${respMesage}`
+  );
+  sendMessage({
+    ws,
+    message: respMesage
+  });
 };

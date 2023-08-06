@@ -4,3 +4,5 @@ export const UNPROCESSABLE_CONTENT =
   'HTTP/1.1 422 Unprocessable Content\r\n\r\n';
 export const INTERNAL_SERVER_ERROR =
   'HTTP/1.1 500 Internal Server Error\r\n\r\n';
+export const REMOTE_IP_HEADER = 'x-forwarded-for';
+export const REQUEST_ID_HEADER = 'x-rid';

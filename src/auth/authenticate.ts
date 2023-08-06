@@ -4,7 +4,12 @@ import { find } from 'lodash';
 import { AuthenticateCallback } from '../@types/auth.d';
 import { Client } from '../@types/client.d';
 import config from '../config';
-import { INTERNAL_SERVER_ERROR, UNAUTHORIZED_MESSAGE, getQs } from '../lib';
+import {
+  INTERNAL_SERVER_ERROR,
+  REMOTE_IP_HEADER,
+  UNAUTHORIZED_MESSAGE,
+  getQs
+} from '../lib';
 import logger from '../logger';
 
 const { CLIENTS } = config;
@@ -27,7 +32,7 @@ export default (req: IncomingMessage, cb: AuthenticateCallback) => {
   }
 
   client.ip = req.socket.remoteAddress;
-  client.remoteIp = req?.headers['x-forwarded-for'] as string | undefined;
+  client.remoteIp = req?.headers[REMOTE_IP_HEADER] as string | undefined;
 
   cb({ client });
 };

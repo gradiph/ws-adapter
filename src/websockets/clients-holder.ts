@@ -36,7 +36,7 @@ export class ClientsHolder implements IClientsHolder {
   }
 
   get({ clientId }: { clientId: string }): WebSocket.WebSocket[] {
-    return (find(this.clients, { clientId }) as AdapterClient).sockets;
+    return (find(this.clients, { clientId }) as AdapterClient)?.sockets || [];
   }
 }
 
