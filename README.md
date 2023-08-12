@@ -6,23 +6,37 @@ A simple adapter for HTTP <=> Websocket.
 
 ```bash
 # install dependencies
-$ pnpm install
+$ npm install
 
 # serve with hot reload at localhost:5001
-$ pnpm run dev
+$ npm run dev
 
 # build for production and launch server
-$ pnpm run build
-$ pnpm run start
+$ npm run build
+$ npm run start
 ```
 
 ## Configuration
 
-Configure the service with `.${APP_NAME}rc` file (_default:_ `.ws-adapterrc`). See `src/@types/config.ts` to see all available configurations.
+Configure the service with `.${APP_NAME}rc` file (_default:_ `.ws-adapterrc`). See `src/@types/config.d.ts` to see all available configurations.
 
 ```javascript
 {
-  "APP_PORT": 5001
+  "APP_PORT": 5001,
+  "CLIENTS": [
+    {
+      "clientId": "client",
+      "clientSecret": "123",
+      "axiosConfig": {
+        "url": "https://yesno.wtf/api",
+        "method": "get"
+      }
+    },
+    {
+      "clientId": "broadcast",
+      "clientSecret": "123"
+    }
+  ]
 }
 ```
 

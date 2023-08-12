@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  ws:
+    build:
+      context: .
+      args:
+        CONFIG: |
+          {
+            "APP_PORT": 5001,
+            "CLIENTS": [
+              {
+                "clientId": "abc",
+                "clientSecret": "123",
+                "axiosConfig": {
+                  "url": "https://yesno.wtf/api",
+                  "method": "get"
+                }
+              },
+              {
+                "clientId": "zxc",
+                "clientSecret": "123"
+              }
+            ]
+          }
+    expose:
+      - "5001"
+    ports:
+      - "5001:5001"
+    environment:
+      TZ: "Asia/Jakarta"
