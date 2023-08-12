@@ -1,3 +1,6 @@
+# Configuration
+.ws-adapterrc
+
 # Logs
 logs
 *.log
